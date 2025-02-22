@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# Clone the existing GitHub repository
-git clone https://github.com/YOUR-USERNAME/AMC.git
-cd AMC
-
 # Create project folder structure
 mkdir -p backend frontend admin database .github/workflows cypress/integration cypress/support
 
