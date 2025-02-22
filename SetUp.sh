@@ -1,28 +1,27 @@
 #!/bin/bash
 
 # Create project folder structure
-mkdir -p afaaq-mobile/{backend,frontend,admin,database,.github/workflows}
+mkdir -p backend frontend admin database .github/workflows
 
 # Backend structure
-mkdir -p afaaq-mobile/backend/{config,controllers,models,routes,middleware,utils}
-touch afaaq-mobile/backend/{server.js,package.json,.env.example}
+mkdir -p backend/{config,controllers,models,routes,middleware,utils}
+touch backend/{server.js,package.json,.env.example}
 
 # Frontend structure
-mkdir -p afaaq-mobile/frontend/{components,pages,styles,utils,public}
-touch afaaq-mobile/frontend/{package.json,.env.example}
+mkdir -p frontend/{components,pages,styles,utils,public}
+touch frontend/{package.json,.env.example}
 
 # Admin panel structure
-mkdir -p afaaq-mobile/admin/{config,database}
-touch afaaq-mobile/admin/package.json
+mkdir -p admin/{config,database}
+touch admin/package.json
 
 # Database folder
-mkdir -p afaaq-mobile/database
-
-touch afaaq-mobile/database/seed.js
+mkdir -p database
+touch database/seed.js
 
 # GitHub Actions workflow folder
-mkdir -p afaaq-mobile/.github/workflows
-touch afaaq-mobile/.github/workflows/deploy.yml
+mkdir -p .github/workflows
+touch .github/workflows/deploy.yml
 
 # Create GitHub Actions CI/CD Workflow for Vercel & Railway
 echo "name: Deploy to Vercel and Railway
@@ -49,14 +48,15 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Deploy Frontend to Vercel
-        run: curl -X POST -H \"Authorization: Bearer ${{ secrets.VERCEL_DEPLOY_HOOK }}\" https://api.vercel.com/v1/integrations/deploy/${{ secrets.VERCEL_PROJECT_ID }}" > afaaq-mobile/.github/workflows/deploy.yml
+        run: curl -X POST -H \"Authorization: Bearer ${{ secrets.VERCEL_DEPLOY_HOOK }}\" https://api.vercel.com/v1/integrations/deploy/${{ secrets.VERCEL_PROJECT_ID }}" > .github/workflows/deploy.yml
 
 # Root files
-touch afaaq-mobile/{.gitignore,LICENSE,README.md,package.json,docker-compose.yml}
+touch {.gitignore,LICENSE,README.md,package.json,docker-compose.yml}
 
-# Initialize git repository
-cd afaaq-mobile
-git init
+# Add and commit changes to the existing GitHub repository
 git add .
 git commit -m "Initial project structure setup with CI/CD"
-echo "Project structure successfully created and initialized with Git and GitHub Actions CI/CD."
+git push origin main
+
+echo "Project structure successfully updated and pushed to GitHub with GitHub Actions CI/CD."
+I/CD."
