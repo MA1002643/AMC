@@ -1,3 +1,0 @@
-# AMC
-
-AMC Ltd Website
